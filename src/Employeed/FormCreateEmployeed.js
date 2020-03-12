@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormEmployeed } from ".";
+import FormEmployeed from "./FormEmployeed";
 import { GridContainer } from "../App";
 import { Grid, Button } from "@material-ui/core";
 import { PersonAddSharp, Email } from "@material-ui/icons";
@@ -36,7 +36,7 @@ const FormCreateEmployeed = () => {
   return (
     <>
       <form onSubmit={e => e.preventDefault()}>
-        <FormEmployeed
+        {/* <FormEmployeed
           state={state}
           setState={{
             setState: async ({ target: { name, value } }) =>
@@ -62,7 +62,7 @@ const FormCreateEmployeed = () => {
                 Proceso: state.Proceso.filter((_, Index) => Index !== Item)
               })
           }}
-        />
+        />*/}
       </form>
     </>
   );
