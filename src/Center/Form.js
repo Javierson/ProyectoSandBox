@@ -37,7 +37,7 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
             }
 
 */
-
+  console.table(state);
   return (
     <>
       <GridContainer>
@@ -47,14 +47,17 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
               Type: "number",
               Name: "ID",
               OnChange: async ({ target: { name, value } }) =>
-                await setCenterState({ ...state, [name]: parseInt(value) }),
+                await setCenterState({
+                  ...centerState,
+                  [name]: parseInt(value)
+                }),
               Value: ID
             },
             {
               Name: "Nombre",
               OnChange: async ({ target: { name, value } }) =>
-                await setCenterState({ ...state, [name]: value }),
-              Value: Nombre,
+                await setCenterState({ ...centerState, [name]: value }),
+              Value: Nombre
               /*EndAdornment: (
                 <InputAdornmentIcon
                   OnClick={async () => {
@@ -66,21 +69,26 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
             }
           ]}
         />
-{/*
+
+        {state.map(({ ID, Nombre }, Item) => (
+          <Chip
+            key={Item}
+            label={`${ID} / ${Nombre}`}
+            onDelete={async () => await onDeleteArrayChipCenter(Item)}
+          />
+        ))}
+
+        {/*
         <PaperChip
           Title="Agregue uno o mas centros"
-          Elements={
-            state &&
-            state.map(({ ID, Nombre }, Item) => (
-              <Chip
-                key={Item}
-                label={`${ID} / ${Nombre}`}
-                onDelete={async () => await onDeleteArrayChipCenter(Item)}
-              />
-            ))
-          }
-        />
-*/}
+          Elements={{ state.map(({ ID, Nombre }, Item) => (
+            <Chip
+              key={Item}
+              label={Nombre}
+              onDelete={async () => await onDeleteArrayChipCenter(Item)}
+            />
+          ))}}
+        />*/}
       </GridContainer>
 
       <ButtonSubmit StartIcon={<BusinessCenterSharp />}>
