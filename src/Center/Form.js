@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Chip } from "@material-ui/core";
+import { Chip, Grid, Paper } from "@material-ui/core";
 import { BusinessCenterSharp } from "@material-ui/icons";
 import {
   ButtonSubmit,
@@ -70,18 +70,22 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
           ]}
         />
 
-        <PaperChip
+        {/* <PaperChip
           Title="Agregue uno o mas centros"
           Length={state && state.length}
-        >
-          {state.map(({ ID, Nombre }, Item) => (
-            <Chip
-              key={Item}
-              label={`${ID} / ${Nombre}`}
-              onDelete={async () => await onDeleteArrayChipCenter(Item)}
-            />
-          ))}
-        </PaperChip>
+        /> */}
+
+        <Grid item xs={12}>
+          <Paper>
+            {state.map(({ ID, Nombre }, Item) => (
+              <Chip
+                key={Item}
+                label={`${ID} / ${Nombre}`}
+                onDelete={async () => await onDeleteArrayChipCenter(Item)}
+              />
+            ))}
+          </Paper>
+        </Grid>
       </GridContainer>
 
       <ButtonSubmit StartIcon={<BusinessCenterSharp />}>
