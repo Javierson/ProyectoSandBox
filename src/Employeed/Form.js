@@ -20,16 +20,18 @@ const FormEmployeed = ({
       ApellidoPaterno,
       ApellidoMaterno,
       Nombre,
-      SegundoNombre
+      SegundoNombre,
+      Correo,
+      Contraseña
     },
-    Lenguaje,
-    Submodulo
+    Herramienta,
+    Proceso
   },
   setState: {
     setState,
     setIntegerState,
-    onDeleteArrayChipLanguage,
-    onDeleteArrayChipSubModule
+    onDeleteArrayChipTool,
+    onDeleteArrayChipProcess
   }
 }) => {
   /* const [state, setState] = useState({
@@ -84,54 +86,65 @@ const FormEmployeed = ({
               Name: "SegundoNombre",
               OnChange: setState,
               Value: SegundoNombre
+            },
+            {
+              Label: "Correo electronico",
+              Name: "Correo",
+              OnChange: setState,
+              Value: ""
+            },
+            {
+              Name: "Contraseña",
+              OnChange: setState,
+              Value: ""
             }
           ]}
         />
 
         <SelectField
-          Label="Lenguajes de programacion"
-          Name="Lenguaje" /* Value  OnChange */
+          Label="Herramienta de desarrollo"
+          Name="Herramienta" /* Value  OnChange */
         />
 
         {/* <RadioField Label = 'Nivel del conocimiento' Value = 'Nivel' Elements = { [{ Value: 'Bajo' }, { Value: 'Mediano' }, { Value: 'Alto' }] }/> */}
 
         {/* <SelectField Label = 'Modulo' Name = 'Lenguaje'/> */}
 
-        <SelectField Label="Submodulo" /* Value  OnChange */ />
+        <SelectField Label="Proceso" /* Value  OnChange */ />
 
         <SliderField XS={3} />
 
         <IconButton Title="Agregar">
           <PostAddSharp />
         </IconButton>
-{/*
+
         <PaperChip
-          Title="Seleccione uno o mas lenguajes de programacion"
+          Title="Seleccione una o mas herramientas de desarrollo"
           Elements={
-            Lenguaje &&
-            Lenguaje.map(({ Lenguaje, Nivel }, Item) => (
+            Herramienta &&
+            Herramienta.map(({ Herramienta, Nivel }, Item) => (
               <Chip
                 key={Item}
-                label={`${Lenguaje} / ${parseLevel(Nivel)}`}
-                onDelete={async () => await onDeleteArrayChipLanguage(Item)}
+                label={`${Herramienta} / ${parseLevel(Nivel)}`}
+                onDelete={async () => await onDeleteArrayChipTool(Item)}
               />
             ))
           }
         />
 
         <PaperChip
-          Title="Seleccione uno o mas submodulos"
+          Title="Seleccione uno o mas procesos"
           Elements={
-            Submodulo &&
-            Submodulo.map(({ Submodulo, Nivel }, Item) => (
+            Proceso &&
+            Proceso.map(({ Proceso, Nivel }, Item) => (
               <Chip
                 key={Item}
-                label={`${Submodulo} / ${parseLevel(Nivel)}`}
-                onDelete={async () => await onDeleteArrayChipSubModule(Item)}
+                label={`${Proceso} / ${parseLevel(Nivel)}`}
+                onDelete={async () => await onDeleteArrayChipProcess(Item)}
               />
             ))
           }
-        />*/}
+        />
       </GridContainer>
       <ButtonSubmit EndIcon={<PersonAddSharp />}>
         Registrar empleado
