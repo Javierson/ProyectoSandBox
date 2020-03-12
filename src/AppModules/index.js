@@ -1,5 +1,5 @@
 import React from "react";
-// import { form } from "../Employeed";
+import { FormCreateEmployeed } from "../Employeed";
 import { FormCreateTool } from "../Tool";
 import { FormCreateCenter } from "../Center";
 
@@ -34,7 +34,11 @@ const Test = () => <h2>Test</h2>,
   },
   Routes = [
     { Label: "Inicio", Path: "/", Component: <Test /> },
-    // { Label: "Usuario", Path: "/Registrar usuario", Component: <FormCreateEmployeed /> },
+    {
+      Label: "Usuario",
+      Path: "/Registrar usuario",
+      Component: <FormCreateEmployeed />
+    },
     {
       Label: "Herramienta",
       Path: "/Registrar herramienta",

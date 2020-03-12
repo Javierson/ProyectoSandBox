@@ -15,7 +15,7 @@ const // { Routes = [ ] } = require("../AppModules"),
       <Drawer>
         <Switch>
           {[
-            { Path: "/", Component: <Test /> },
+            { Path: "/", Component: Test },
             { Path: "/Registrar usuario", Component: FormCreateEmployeed },
             { Path: "/Registrar herramienta", Component: FormCreateTool },
             { Path: "/Registrar centro", Component: FormCreateCenter }
