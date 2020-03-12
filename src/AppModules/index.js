@@ -33,21 +33,21 @@ const Test = () => <h2>Test</h2>,
     return Value;
   },
   Routes = [
-    { Label: "Inicio", Path: "/", Component: <Test /> },
+    { Label: "Inicio", Path: "/", Component: Test },
     {
       Label: "Usuario",
       Path: "/Registrar usuario",
-      Component: <FormCreateEmployeed />
+      Component: FormCreateEmployeed
     },
     {
       Label: "Herramienta",
       Path: "/Registrar herramienta",
-      Component: <FormCreateTool />
+      Component: FormCreateTool
     },
     {
       Label: "Centro",
       Path: "/Registrar centro",
-      Component: <FormCreateCenter />
+      Component: FormCreateCenter
     }
   ];
 
