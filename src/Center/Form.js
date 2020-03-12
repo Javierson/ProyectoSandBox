@@ -70,12 +70,18 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
           ]}
         />
 
-        {/* <PaperChip
-          Title="Agregue uno o mas centros"
-          Length={state && state.length}
-        /> */}
+        <PaperChip /* Title="Agregue uno o mas centros" Length={state && state.length} */
+        >
+          {state.map(({ ID, Nombre }, Item) => (
+            <Chip
+              key={Item}
+              label={`${ID} / ${Nombre}`}
+              onDelete={async () => await onDeleteArrayChipCenter(Item)}
+            />
+          ))}
+        </PaperChip>
 
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Paper>
             {state.map(({ ID, Nombre }, Item) => (
               <Chip
@@ -85,7 +91,7 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
               />
             ))}
           </Paper>
-        </Grid>
+        </Grid> */}
       </GridContainer>
 
       <ButtonSubmit StartIcon={<BusinessCenterSharp />}>
