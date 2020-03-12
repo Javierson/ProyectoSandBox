@@ -7,8 +7,7 @@ const Message = (X, Y) => {
   PaperChip = ({ XS = 12, Title, Length, children }) => (
     <Grid item xs={XS}>
       <Paper>
-        {children}
-        {/*Message(Title, Length)*/}
+        {children && Message(Title, Length)}
       </Paper>
     </Grid>
   );
