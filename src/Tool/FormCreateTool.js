@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form } from ".";
+import { FormTool } from ".";
 
 const FormCreateTool = () => {
   const [state, setState] = useState({
@@ -13,7 +13,7 @@ const FormCreateTool = () => {
     <form onSubmit={e => e.preventDefault()}>
       {/* setState = { async ({ target: { name, value } }) => await setState({ ...state, Herramienta: { Array(...state.Herramienta).concat([]), [name]: value } }) } */}
 
-      <Form state={state} />
+      <FormTool state={state} />
     </form>
   );
 };

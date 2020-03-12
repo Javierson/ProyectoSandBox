@@ -5,7 +5,7 @@ import {
   ButtonSubmit,
   GridContainer,
   GridTextField,
-  InputAdornmentIcon,
+  // InputAdornmentIcon,
   PaperChip
 } from "../App";
 
@@ -55,18 +55,18 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
               OnChange: async ({ target: { name, value } }) =>
                 await setCenterState({ ...state, [name]: value }),
               Value: Nombre,
-              EndAdornment: (
+              /*EndAdornment: (
                 <InputAdornmentIcon
                   OnClick={async () => {
                     await addArrayChipCenter(centerState);
                     await setCenterState({ ID: undefined, Nombre: undefined });
                   }}
                 />
-              )
+              )*/
             }
           ]}
         />
-
+{/*
         <PaperChip
           Title="Agregue uno o mas centros"
           Elements={
@@ -80,6 +80,7 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
             ))
           }
         />
+*/}
       </GridContainer>
 
       <ButtonSubmit StartIcon={<BusinessCenterSharp />}>

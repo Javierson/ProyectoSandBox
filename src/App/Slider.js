@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 })),
 
-// marks = [ { value: 0, label: '0Â°C' }, { value: 20, label: '20Â°C' }, { value: 37, label: '37Â°C' }, { value: 100, label: '100Â°C' } ]
+// marks = [ { value: 0, label: '0ÃÂ°C' }, { value: 20, label: '20ÃÂ°C' }, { value: 37, label: '37ÃÂ°C' }, { value: 100, label: '100ÃÂ°C' } ]
 
 marks = [ { value: 0, label: 'Nulo' }, { value: 1, label: 'Bajo' }, { value: 2, label: 'Medio' }, { value: 3, label: 'Alto' } ]
 

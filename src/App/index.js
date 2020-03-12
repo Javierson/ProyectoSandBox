@@ -4,6 +4,8 @@ import App from "./App";
 
 import ButtonGroup from "./ButtonGroup";
 
+import ButtonSubmit from './ButtonSubmit'
+
 import Drawer from "./Drawer";
 
 import GridContainer from "./GridContainer";
@@ -24,6 +26,7 @@ export {
   Alert,
   App,
   ButtonGroup,
+  ButtonSubmit,
   Drawer,
   GridContainer,
   IconButton,

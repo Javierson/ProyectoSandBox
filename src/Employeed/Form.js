@@ -104,7 +104,7 @@ const FormEmployeed = ({
         <IconButton Title="Agregar">
           <PostAddSharp />
         </IconButton>
-
+{/*
         <PaperChip
           Title="Seleccione uno o mas lenguajes de programacion"
           Elements={
@@ -131,7 +131,7 @@ const FormEmployeed = ({
               />
             ))
           }
-        />
+        />*/}
       </GridContainer>
       <ButtonSubmit EndIcon={<PersonAddSharp />}>
         Registrar empleado

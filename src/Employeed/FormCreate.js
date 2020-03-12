@@ -33,7 +33,7 @@ const FormCreateEmployeed = () => {
 
   return (
     <>
-      <Form
+      <FormEmployeed
         state={state}
         setState={{
           setState: async ({ target: { name, value } }) =>

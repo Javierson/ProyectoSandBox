@@ -20,7 +20,7 @@ const FormTool = ({ state, setState }) => {
       { Nombre: "Framework", Tipo: 0 },
       { Nombre: "Lenguaje de programacion", Tipo: 1 },
       { Nombre: "Libreria", Tipo: 2 },
-      { Nombre: "Patron de diseño", Tipo: 3 }
+      { Nombre: "Patron de diseÃ±o", Tipo: 3 }
     ];
 
   return (
