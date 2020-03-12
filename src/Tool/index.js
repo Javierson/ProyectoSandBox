@@ -1,5 +1,5 @@
-import Form from "./Form";
+import FormTool from "./Form";
 
 import FormCreateTool from "./FormCreateTool";
 
-export { Form, FormCreateTool };
+export { FormTool, FormCreateTool };

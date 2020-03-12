@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Form } from ".";
+import { FormEmployeed } from ".";
 import { GridContainer } from "../App";
 import { Grid, Button } from "@material-ui/core";
 import { PersonAddSharp } from "@material-ui/icons";
 
-const FormCreate = () => {
+const FormCreateEmployeed = () => {
   const [state, setState] = useState({
     Empleado: {
       ID: undefined,
@@ -52,13 +52,13 @@ const FormCreate = () => {
               Lenguaje: state.Lenguaje.filter((_, Index) => Index !== Item)
             }),
           onDeleteArrayChipSubModule: async Item =>
-          await setState({
-            ...state,
-            Submodulo: state.Submodulo.filter((_, Index) => Index !== Item)
-          })
+            await setState({
+              ...state,
+              Submodulo: state.Submodulo.filter((_, Index) => Index !== Item)
+            })
         }}
       />
-      { /* <GridContainer>
+      {/* <GridContainer>
         <Grid item xs={4}>
           <Button
             type="submit"
@@ -70,9 +70,9 @@ const FormCreate = () => {
             Agregar elemento
           </Button>
         </Grid>
-      </GridContainer> */ }
+      </GridContainer> */}
     </>
   );
 };
 
-export default FormCreate;
+export default FormCreateEmployeed;

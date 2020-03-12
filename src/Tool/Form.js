@@ -7,13 +7,13 @@ import {
   SelectField
 } from "../App";
 
-const Form = ({ state, setState }) => {
+const FormTool = ({ state, setState }) => {
   const [toolState, setToolState] = useState({
       Nombre: undefined,
       Tipo: undefined,
       Select: false
     }),
-    { Nombre, Tipo, Select } = typeState,
+    { Nombre, Tipo, Select } = toolState,
     SelectState = value => async () =>
       await setToolState({ ...toolState, Select: value }),
     Tools = [
@@ -63,4 +63,4 @@ const Form = ({ state, setState }) => {
   );
 };
 
-export default Form;
+export default FormTool;

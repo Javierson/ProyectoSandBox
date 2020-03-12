@@ -1,16 +1,25 @@
-
-
 import React, { useState } from "react";
-import { Chip } from '@material-ui/core'
-import { BusinessCenterSharp } from '@material-ui/icons'
-import { ButtonSubmit, GridContainer, GridTextField, InputAdornmentIcon, PaperChip } from "../App"
+import { Chip } from "@material-ui/core";
+import { BusinessCenterSharp } from "@material-ui/icons";
+import {
+  ButtonSubmit,
+  GridContainer,
+  GridTextField,
+  InputAdornmentIcon,
+  PaperChip
+} from "../App";
 
+const FormCenter = ({
+  state,
+  setState: { addArrayChipCenter, onDeleteArrayChipCenter }
+}) => {
+  const [centerState, setCenterState] = useState({
+      ID: undefined,
+      Nombre: undefined
+    }),
+    { ID, Nombre } = centerState;
 
-const Form = ({ state, setState: { addArrayChipCenter, onDeleteArrayChipCenter } }) => {
-
-  const [centerState, setCenterState] = useState({ ID: undefined, Nombre: undefined }), {ID, Nombre} = centerState
-
-/*
+  /*
 
 async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: undefined, Nombre: undefined }) }
 
@@ -30,27 +39,35 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
 */
 
   return (
-  <>
-    <GridContainer>
+    <>
+      <GridContainer>
+        <GridTextField
+          Elements={[
+            {
+              Type: "number",
+              Name: "ID",
+              OnChange: async ({ target: { name, value } }) =>
+                await setCenterState({ ...state, [name]: parseInt(value) }),
+              Value: ID
+            },
+            {
+              Name: "Nombre",
+              OnChange: async ({ target: { name, value } }) =>
+                await setCenterState({ ...state, [name]: value }),
+              Value: Nombre,
+              EndAdornment: (
+                <InputAdornmentIcon
+                  OnClick={async () => {
+                    await addArrayChipCenter(centerState);
+                    await setCenterState({ ID: undefined, Nombre: undefined });
+                  }}
+                />
+              )
+            }
+          ]}
+        />
 
-      <GridTextField
-        Elements={[
-          {
-            Type: "number",
-            Name: "ID",
-            OnChange: async ({ target: { name, value } }) => await setCenterState({ ...state, [name]: parseInt(value) }),
-            Value: ID
-          },
-          {
-            Name: "Nombre",
-            OnChange: async ({ target: { name, value } }) => await setCenterState({ ...state, [name]: value }),
-            Value: Nombre,
-            EndAdornment: <InputAdornmentIcon OnClick = { async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: undefined, Nombre: undefined }) } }/>
-          }
-        ]}
-      />
-   
-    <PaperChip
+        <PaperChip
           Title="Agregue uno o mas centros"
           Elements={
             state &&
@@ -63,14 +80,13 @@ async () => { await addArrayChipCenter(centerState); await setCenterState({ ID: 
             ))
           }
         />
+      </GridContainer>
 
- </GridContainer>
+      <ButtonSubmit StartIcon={<BusinessCenterSharp />}>
+        Registrar centro
+      </ButtonSubmit>
+    </>
+  );
+};
 
-    <ButtonSubmit StartIcon = { <BusinessCenterSharp/> }>Registrar centro</ButtonSubmit>
-
-  </>
-);
-        }
-
-export default Form;
-
+export default FormCenter;

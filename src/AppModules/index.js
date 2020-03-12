@@ -10,38 +10,41 @@ const Test = () => <h2>Test</h2>,
     Justify: "space-evenly",
     AlignItems: "center",
     XS: 4
-  }, parseLevel = Integer => {
-    let Value
+  },
+  parseLevel = Integer => {
+    let Value;
     switch (Integer) {
       case null:
-        Value = 'Nulo'
-        break
+        Value = "Nulo";
+        break;
       case 1:
-        Value = 'Bajo'
-        break
+        Value = "Bajo";
+        break;
       case 2:
-        Value = 'Medio'
-        break
+        Value = "Medio";
+        break;
       case 3:
-        Value = 'Alto'
-        break
+        Value = "Alto";
+        break;
       default:
-        Value = 'No especificado'
-        break
+        Value = "No especificado";
+        break;
     }
-    return Value
+    return Value;
   },
   Routes = [
-    { Label: "Inicio", Path: "/", Component: Test },
-    { Label: "Usuario", Path: "/Registrar usuario", Component: FormCreate },
+    { Label: "Inicio", Path: "/", Component: <Test /> },
+    { Label: "Usuario", Path: "/Registrar usuario", Component: <FormCreate /> },
     {
       Label: "Herramienta",
       Path: "/Registrar herramienta",
-      Component: FormCreateTool
+      Component: <FormCreateTool />
     },
-    { Label: "Centro", Path: "/Registrar centro", Component: FormCreateCenter }
-  ]
+    {
+      Label: "Centro",
+      Path: "/Registrar centro",
+      Component: <FormCreateCenter />
+    }
+  ];
 
-
-export { parseLevel, Routes, GridLayout }
-
+export { parseLevel, Routes, GridLayout };

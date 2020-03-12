@@ -12,7 +12,7 @@ import {
 } from "../App";
 import { parseLevel } from "../AppModules";
 
-const Form = ({
+const FormEmployeed = ({
   state: {
     Empleado: {
       ID,
@@ -140,4 +140,4 @@ const Form = ({
   );
 };
 
-export default Form;
+export default FormEmployeed;

@@ -1,10 +1,5 @@
+import FormEmployeed from "./Form";
 
+import FormCreateEmployeed from "./FormCreate";
 
-import Form from './Form'
-
-
-import FormCreate from './FormCreate'
-
-
-export { Form, FormCreate }
-
+export { FormEmployeed, FormCreateEmployeed };
