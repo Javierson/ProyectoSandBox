@@ -1,0 +1,7 @@
+.MuiChip-root {
+  margin: 4px;
+}
+
+.MuiPaper-root > .MuiTypography-root {
+  padding: 4px 0;
+}
