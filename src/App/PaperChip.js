@@ -1,14 +1,15 @@
 import React from "react";
 import { Paper, Grid, Typography } from "@material-ui/core";
 
-const PaperChip = ({ XS = 12, Title, Elements }) => (
+const Message = (X, Y) => {
+  if (!Y || Y === 0 )
+  return <Typography align="center">{X}</Typography>
+},
+PaperChip = ({ XS = 12, Title, Length, children }) => (
   <Grid item xs={XS}>
+    { children }
     <Paper>
-      {Elements && Elements.length !== 0 ? (
-        Elements
-      ) : (
-        <Typography align="center">{Title}</Typography>
-      )}
+      { Message(Title, Length) }
     </Paper>
   </Grid>
 );
