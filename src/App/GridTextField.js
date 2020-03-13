@@ -26,7 +26,7 @@ const { GridLayout } = require("../AppModules"),
             name={Name}
             value={Value}
             onChange={OnChange}
-            inputProps={Props}
+            InputProps={Props}
             fullWidth
             required={Required}
           />

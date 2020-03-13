@@ -14,7 +14,7 @@ import SelectField from "./Select";
 
 import RadioField from "./Radio";
 
-// import InputAdornmentIcon from "./InputAdornment";
+import InputAdornmentIcon from "./InputAdornment";
 
 import PaperChip from './PaperChip'
 
@@ -34,7 +34,7 @@ export {
   IconButton,
   SelectField,
   RadioField,
-//  InputAdornmentIcon,
+  InputAdornmentIcon,
   PaperChip,
   GridTextField,
   SliderField

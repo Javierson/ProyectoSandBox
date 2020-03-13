@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Chip, InputAdornment } from "@material-ui/core";
+import { Chip } from "@material-ui/core";
 import {
   PersonAddSharp,
   PostAddSharp,
@@ -11,6 +11,7 @@ import {
   GridContainer,
   GridTextField,
   IconButton,
+  InputAdornmentIcon,
   SelectField,
   SliderField,
   PaperChip
@@ -39,21 +40,10 @@ const FormEmployeed = ({
     onDeleteArrayChipProcess
   }
 }) => {
-  const [userState, setUserState] = useState({ Visible: false }),
-    { Visible } = userState;
 
-  /* const [state, setState] = useState({
-    ID: undefined,
-    Nombre: undefined,
-    SegundoNombre: undefined,
-    ApellidoPaterno: undefined,
-    ApellidoMaterno: undefined,
-    Modulo: undefined
-  }); */
 
-  // const setEmployeedState = async ({ target: { name, value } }) => await setState({ ...state, [name]: value })
+  const [userState, setUserState] = useState({ Visible: false }), { Visible } = userState, VisibleState = !Visible ? { Title:  'Mostrar contraseña', Icon: <VisibilityOffSharp /> } : { Title: 'Ocultar contraseña', Icon: <VisibilitySharp /> }, { Title, Icon } = VisibleState
 
-  // console.table(Lenguaje)
 
   return (
     <>
@@ -103,22 +93,13 @@ const FormEmployeed = ({
               Value: Correo
             },
             {
-              Type: !Visible ? "password" : "text",
+              Type: !userState ? "text" : "password",
               Name: "Contraseña",
               OnChange: setState,
               Value: Contraseña,
-              Props: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="Contraseña"
-                    onClick={async () =>
-                      await setUserState({ ...userState, Visible: !Visible })
-                    }
-                  >
-                    {!Visible ? <VisibilitySharp /> : <VisibilityOffSharp />}
-                  </IconButton>
-                </InputAdornment>
-              )
+              Props: {
+                endAdornment: <InputAdornmentIcon Title = { Title } OnClick={ async () => await setUserState({ ...userState, Visible: !Visible })}>{Icon}</InputAdornmentIcon>
+              }
             }
           ]}
         />
@@ -173,6 +154,6 @@ const FormEmployeed = ({
       </ButtonSubmit>
     </>
   );
-};
+}
 
 export default FormEmployeed;
