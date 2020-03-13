@@ -99,7 +99,7 @@ const FormEmployeed = ({
               Value: Correo
             },
             {
-              Type: Type,
+              Type,
               Name: "Contraseña",
               OnChange: setState,
               Value: Contraseña,

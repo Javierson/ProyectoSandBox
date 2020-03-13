@@ -159,13 +159,15 @@ export default function MiniDrawer({ children }) {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
+          {["Registrar sistema", "Registrar modulo", "Registrar submodulo", 'Registrar proceso'].map((text, _) => (
+            <Link to={`$/${text}`} key={_}>
+            <ListItem button key={_}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {_ % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>
