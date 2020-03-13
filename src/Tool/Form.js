@@ -26,7 +26,13 @@ const FormTool = ({
       { Nombre: "Libreria", Tipo: 2 },
       { Nombre: "Patron de diseño", Tipo: 3 }
     ],
-    parseTool = Item => Tools.find(({ Tipo }) => Tipo === Item).Nombre;
+    parseTool = Item => {
+      try {
+        return Tools.find(({ Tipo }) => Tipo === Item).Nombre;
+      } catch {
+        return "No especificado";
+      }
+    };
 
   // console.log(parseTool(0).Nombre, parseTool(1).Nombre, parseTool(2).Nombre, parseTool(3).Nombre)
 
@@ -46,11 +52,11 @@ const FormTool = ({
           Value={"Tipo"}
           XS={6}
         >
-          {Tools.map(({ Nombre, Tipo }, _) => (
+          {/* Tools.map(({ Nombre, Tipo }, _) => (
             <MenuItem key={_} value={Tipo}>
               {Nombre}
             </MenuItem>
-          ))}
+          ))*/}
         </SelectField>
 
         <GridTextField
