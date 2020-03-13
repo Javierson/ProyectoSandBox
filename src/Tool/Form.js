@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { MenuItem } from "@material-ui/core";
+import { Chip, MenuItem } from "@material-ui/core";
 import {
   ButtonSubmit,
   GridContainer,
   GridTextField,
-  SelectField
+  SelectField,
+  PaperChip
 } from "../App";
 
-const FormTool = ({ state, setState }) => {
+const FormTool = ({
+  state,
+  setState: { addArrayChipTool, onDeleteArrayChipTool }
+}) => {
   const [toolState, setToolState] = useState({
       Nombre: undefined,
       Tipo: undefined,
@@ -57,6 +61,19 @@ const FormTool = ({ state, setState }) => {
             }
           ]}
         />
+
+        <PaperChip
+          Title="Agregue una o mas herramientas de desarrollo"
+          Length={state.length}
+        >
+          {state.map(({ Nombre, Tipo }, Item) => (
+            <Chip
+              key={Item}
+              label={`${Nombre} / ${Tipo}`}
+              // onDelete={async () => await onDeleteArrayChipCenter(Item)}
+            />
+          ))}
+        </PaperChip>
       </GridContainer>
       <ButtonSubmit>Registrar</ButtonSubmit>
     </>
