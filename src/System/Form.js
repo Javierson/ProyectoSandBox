@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Chip, Grid, Paper, InputAdornmentIcon } from "@material-ui/core";
+import { Chip, Grid, Paper } from "@material-ui/core";
 import { BusinessCenterSharp, SettingsSharp } from "@material-ui/icons";
 import {
   ButtonSubmit,
   GridContainer,
   GridTextField,
-  // InputAdornmentIcon,
+  InputAdornmentIcon,
   PaperChip
 } from "../App";
 
@@ -15,7 +15,15 @@ const FormSystem = ({
 }) => {
   const InitialState = { Nombre: undefined },
     [systemState, setSystemState] = useState(InitialState),
-    { Nombre } = systemState;
+    { Nombre } = systemState,
+    ComponentState =
+      Nombre?.trim() === 0
+        ? {
+            Title: "Primero seleccione un centro e ingrese un nombre",
+            Disabled: true
+          }
+        : { Title: "Agregar sistema", Disabled: false },
+    { Title, Disabled } = ComponentState;
 
   return (
     <>
@@ -30,8 +38,8 @@ const FormSystem = ({
               Props: {
                 endAdornment: (
                   <InputAdornmentIcon
-                    Title="Agregar sistema"
-                    Disabled={Nombre?.trim().length === 0 ? true : false}
+                    Title={Title}
+                    Disabled={Disabled}
                     OnClick={async () => {
                       await addArrayChipSystem(systemState);
                       await setSystemState(InitialState);
@@ -55,7 +63,7 @@ const FormSystem = ({
       </GridContainer>
 
       <ButtonSubmit StartIcon={<SettingsSharp />}>
-        Registrar sistema
+        Registrar sistema{!Nombre?.trim() < 2 && "s"}
       </ButtonSubmit>
     </>
   );
