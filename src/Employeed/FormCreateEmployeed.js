@@ -36,7 +36,7 @@ const FormCreateEmployeed = () => {
   return (
     <>
       <form onSubmit={e => e.preventDefault()}>
-        {/* <FormEmployeed
+        <FormEmployeed
           state={state}
           setState={{
             setState: async ({ target: { name, value } }) =>
@@ -62,7 +62,8 @@ const FormCreateEmployeed = () => {
                 Proceso: state.Proceso.filter((_, Index) => Index !== Item)
               })
           }}
-        />*/}
+        />
+        *
       </form>
     </>
   );
