@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Chip, Grid, Paper } from "@material-ui/core";
-import { BusinessCenterSharp, SettingsSharp } from "@material-ui/icons";
+import { SettingsSharp } from "@material-ui/icons";
+import { Chip } from "@material-ui/core";
 import {
   ButtonSubmit,
   GridContainer,
   GridTextField,
   InputAdornmentIcon,
+  SelectField,
   PaperChip
 } from "../App";
 
@@ -13,9 +14,9 @@ const FormSystem = ({
   state,
   setState: { addArrayChipSystem, onDeleteArrayChipSystem }
 }) => {
-  const InitialState = { Nombre: undefined },
+  const InitialState = { ID: undefined, Nombre: undefined },
     [systemState, setSystemState] = useState(InitialState),
-    { Nombre } = systemState,
+    { ID, Nombre } = systemState,
     ComponentState =
       Nombre?.trim() === 0
         ? {
@@ -23,11 +24,22 @@ const FormSystem = ({
             Disabled: true
           }
         : { Title: "Agregar sistema", Disabled: false },
+    Required = state?.length !== 0 ? false : true,
     { Title, Disabled } = ComponentState;
 
   return (
     <>
       <GridContainer>
+        <SelectField
+          Name="ID"
+          Value={ID}
+          // Open
+          // OnClose
+          // OnOpen
+          // OnChange
+          Required
+        />
+
         <GridTextField
           Elements={[
             {
@@ -41,17 +53,18 @@ const FormSystem = ({
                     Title={Title}
                     Disabled={Disabled}
                     OnClick={async () => {
-                      await addArrayChipSystem(systemState);
+                      await addArrayChipSystem({ Nombre: Nombre.trim() });
                       await setSystemState(InitialState);
                     }}
                   />
                 )
-              }
+              },
+              Required
             }
           ]}
         />
 
-        <PaperChip Title="Agregue uno o mas sistemas" Length={state.length}>
+        <PaperChip Title="Agregue uno o mas sistemas" Length={state?.length}>
           {state.map(({ ID, Nombre }, Item) => (
             <Chip
               key={Item}
@@ -63,7 +76,7 @@ const FormSystem = ({
       </GridContainer>
 
       <ButtonSubmit StartIcon={<SettingsSharp />}>
-        Registrar sistema{!Nombre?.trim() < 2 && "s"}
+        Registrar sistema{state.length > 1 && "s"}
       </ButtonSubmit>
     </>
   );
