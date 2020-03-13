@@ -9,8 +9,7 @@ import { FormCreateTool } from "../Tool";
 import { FormCreateCenter } from "../Center";
 import { FormCreateSystem } from "../System";
 
-const // { Routes = [ ] } = require("../AppModules"),
-  Test = () => <h2>Test</h2>,
+const Test = () => <h2>Test</h2>,
   AlertMessage = () => <Alert Severity="info">Ruta no definida</Alert>,
   App = () => (
     <Container>

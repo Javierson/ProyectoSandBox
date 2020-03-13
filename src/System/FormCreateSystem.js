@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from ".";
 
-const FormCreateCenter = () => {
+const FormCreateSystem = () => {
   const [state, setState] = useState({
       Sistema: [
         { ID: 1, Nombre: "Nombre 1" },
@@ -15,6 +15,7 @@ const FormCreateCenter = () => {
   return (
     <>
       <form onSubmit={e => e.preventDefault()}>
+        hola mundo
         <Form
           state={Sistema}
           setState={{
@@ -32,4 +33,4 @@ const FormCreateCenter = () => {
   );
 };
 
-export default FormCreateCenter;
+export default FormCreateSystem;
