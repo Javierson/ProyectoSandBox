@@ -13,6 +13,7 @@ const { GridLayout } = require("../AppModules"),
           Label = Name,
           OnChange,
           Props,
+          EndAdornment,
           Required = true,
           XS = GridLayout.XS
         },

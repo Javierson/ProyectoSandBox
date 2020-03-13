@@ -1,6 +1,11 @@
-import React from "react";
-import { Chip } from "@material-ui/core";
-import { PersonAddSharp, PostAddSharp } from "@material-ui/icons";
+import React, { useState } from "react";
+import { Chip, InputAdornment } from "@material-ui/core";
+import {
+  PersonAddSharp,
+  PostAddSharp,
+  VisibilitySharp,
+  VisibilityOffSharp
+} from "@material-ui/icons";
 import {
   ButtonSubmit,
   GridContainer,
@@ -34,6 +39,9 @@ const FormEmployeed = ({
     onDeleteArrayChipProcess
   }
 }) => {
+  const [userState, setUserState] = useState({ Visible: false }),
+    { Visible } = userState;
+
   /* const [state, setState] = useState({
     ID: undefined,
     Nombre: undefined,
@@ -85,18 +93,32 @@ const FormEmployeed = ({
               Label: "Segundo nombre",
               Name: "SegundoNombre",
               OnChange: setState,
-              Value: SegundoNombre
+              Value: SegundoNombre,
+              Required: false
             },
             {
               Label: "Correo electronico",
               Name: "Correo",
               OnChange: setState,
-              Value: ""
+              Value: Correo
             },
             {
+              Type: !Visible ? "password" : "text",
               Name: "Contraseña",
               OnChange: setState,
-              Value: ""
+              Value: Contraseña,
+              Props: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="Contraseña"
+                    onClick={async () =>
+                      await setUserState({ ...userState, Visible: !Visible })
+                    }
+                  >
+                    {!Visible ? <VisibilitySharp /> : <VisibilityOffSharp />}
+                  </IconButton>
+                </InputAdornment>
+              )
             }
           ]}
         />
