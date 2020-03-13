@@ -7,10 +7,16 @@ const InputAdornmentIcon = ({
   Title = "Agregar",
   Edge = "end",
   OnClick,
+  Disabled,
   children = <AddSharp />
 }) => (
   <InputAdornment position={Position} onClick={OnClick}>
-    <IconButton aria-label={Title} title={Title} edge={Edge}>
+    <IconButton
+      aria-label={Title}
+      title={Title}
+      edge={Edge}
+      disabled={Disabled}
+    >
       {children}
     </IconButton>
   </InputAdornment>

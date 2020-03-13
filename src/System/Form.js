@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Chip, Grid, Paper } from "@material-ui/core";
+import { Chip, Grid, Paper, InputAdornmentIcon } from "@material-ui/core";
 import { BusinessCenterSharp, SettingsSharp } from "@material-ui/icons";
 import {
   ButtonSubmit,
@@ -13,7 +13,8 @@ const FormSystem = ({
   state,
   setState: { addArrayChipSystem, onDeleteArrayChipSystem }
 }) => {
-  const [systemState, setSystemState] = useState({ Nombre: undefined }),
+  const InitialState = { Nombre: undefined },
+    [systemState, setSystemState] = useState(InitialState),
     { Nombre } = systemState;
 
   return (
@@ -25,15 +26,19 @@ const FormSystem = ({
               Name: "Nombre",
               OnChange: async ({ target: { name, value } }) =>
                 await setSystemState({ ...systemState, [name]: value }),
-              Value: Nombre
-              /*EndAdornment: (
-                <InputAdornmentIcon
-                  OnClick={async () => {
-                    await addArrayChipCenter(centerState);
-                    await setCenterState({ ID: undefined, Nombre: undefined });
-                  }}
-                />
-              )*/
+              Value: Nombre,
+              Props: {
+                endAdornment: (
+                  <InputAdornmentIcon
+                    Title="Agregar sistema"
+                    Disabled={Nombre?.trim().length === 0 ? true : false}
+                    OnClick={async () => {
+                      await addArrayChipSystem(systemState);
+                      await setSystemState(InitialState);
+                    }}
+                  />
+                )
+              }
             }
           ]}
         />
