@@ -40,10 +40,16 @@ const FormEmployeed = ({
     onDeleteArrayChipProcess
   }
 }) => {
-
-
-  const [userState, setUserState] = useState({ Visible: false }), { Visible } = userState, VisibleState = !Visible ? { Title:  'Mostrar contraseña', Icon: <VisibilityOffSharp /> } : { Title: 'Ocultar contraseña', Icon: <VisibilitySharp /> }, { Title, Icon } = VisibleState
-
+  const [userState, setUserState] = useState({ Visible: false }),
+    { Visible } = userState,
+    VisibleState = !Visible
+      ? { Type: "text", Title: "Mostrar contraseña", Icon: <VisibilitySharp /> }
+      : {
+          Type: "password",
+          Title: "Ocultar contraseña",
+          Icon: <VisibilityOffSharp />
+        },
+    { Type, Title, Icon } = VisibleState;
 
   return (
     <>
@@ -93,12 +99,21 @@ const FormEmployeed = ({
               Value: Correo
             },
             {
-              Type: !userState ? "text" : "password",
+              Type: Type,
               Name: "Contraseña",
               OnChange: setState,
               Value: Contraseña,
               Props: {
-                endAdornment: <InputAdornmentIcon Title = { Title } OnClick={ async () => await setUserState({ ...userState, Visible: !Visible })}>{Icon}</InputAdornmentIcon>
+                endAdornment: (
+                  <InputAdornmentIcon
+                    Title={Title}
+                    OnClick={async () =>
+                      await setUserState({ ...userState, Visible: !Visible })
+                    }
+                  >
+                    {Icon}
+                  </InputAdornmentIcon>
+                )
               }
             }
           ]}
@@ -154,6 +169,6 @@ const FormEmployeed = ({
       </ButtonSubmit>
     </>
   );
-}
+};
 
 export default FormEmployeed;
