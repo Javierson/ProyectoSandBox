@@ -24,8 +24,11 @@ const FormTool = ({
       { Nombre: "Framework", Tipo: 0 },
       { Nombre: "Lenguaje de programacion", Tipo: 1 },
       { Nombre: "Libreria", Tipo: 2 },
-      { Nombre: "Patron de diseÃ±o", Tipo: 3 }
-    ];
+      { Nombre: "Patron de diseño", Tipo: 3 }
+    ],
+    parseTool = Item => Tools.find(({ Tipo }) => Tipo === Item).Nombre;
+
+  // console.log(parseTool(0).Nombre, parseTool(1).Nombre, parseTool(2).Nombre, parseTool(3).Nombre)
 
   return (
     <>
@@ -69,8 +72,8 @@ const FormTool = ({
           {state.map(({ Nombre, Tipo }, Item) => (
             <Chip
               key={Item}
-              label={`${Nombre} / ${Tipo}`}
-              // onDelete={async () => await onDeleteArrayChipCenter(Item)}
+              label={`${Nombre} / ${parseTool(Tipo)}`}
+              onDelete={async () => await onDeleteArrayChipTool(Item)}
             />
           ))}
         </PaperChip>
