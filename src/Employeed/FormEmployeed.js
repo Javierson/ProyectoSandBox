@@ -43,10 +43,10 @@ const FormEmployeed = ({
   const [userState, setUserState] = useState({ Visible: false }),
     { Visible } = userState,
     VisibleState = !Visible
-      ? { Type: "text", Title: "Mostrar contraseña", Icon: <VisibilitySharp /> }
+      ? { Type: "text", Title: "Ocultar contraseña", Icon: <VisibilitySharp /> }
       : {
           Type: "password",
-          Title: "Ocultar contraseña",
+          Title: "Mostrar contraseña",
           Icon: <VisibilityOffSharp />
         },
     { Type, Title, Icon } = VisibleState;

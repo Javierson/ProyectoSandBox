@@ -15,7 +15,6 @@ const FormCreateSystem = () => {
   return (
     <>
       <form onSubmit={e => e.preventDefault()}>
-        hola mundo
         <Form
           state={Sistema}
           setState={{

@@ -18,7 +18,7 @@ const FormSystem = ({
     [systemState, setSystemState] = useState(InitialState),
     { ID, Nombre, Select } = systemState,
     ComponentState =
-      Nombre?.trim() === 0
+      Nombre?.trim().length === 0
         ? {
             Title: "Primero seleccione un centro e ingrese un nombre",
             Disabled: true
@@ -49,7 +49,7 @@ const FormSystem = ({
           Required
         >
           {Centro?.map(({ ID, Nombre }, _) => (
-            <MenuItem key={_} value={ID}>{`${ID} / ${Nombre}`}</MenuItem>
+            <MenuItem key={_} value={ID}>{`${ID} ${Nombre}`}</MenuItem>
           ))}
         </SelectField>
 
