@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Chip, MenuItem } from "@material-ui/core";
 import { SettingsSharp } from "@material-ui/icons";
-import { Chip } from "@material-ui/core";
 import {
   ButtonSubmit,
   GridContainer,
@@ -14,9 +14,9 @@ const FormSystem = ({
   state,
   setState: { addArrayChipSystem, onDeleteArrayChipSystem }
 }) => {
-  const InitialState = { ID: undefined, Nombre: undefined },
+  const InitialState = { ID: undefined, Nombre: undefined, Select: false },
     [systemState, setSystemState] = useState(InitialState),
-    { ID, Nombre } = systemState,
+    { ID, Nombre, Select } = systemState,
     ComponentState =
       Nombre?.trim() === 0
         ? {
@@ -25,7 +25,16 @@ const FormSystem = ({
           }
         : { Title: "Agregar sistema", Disabled: false },
     Required = state?.length !== 0 ? false : true,
-    { Title, Disabled } = ComponentState;
+    { Title, Disabled } = ComponentState,
+    SelectState = Value => async () =>
+      await setSystemState({ ...systemState, Select: Value }),
+    // JSON de los centros
+    Centro = [
+      { ID: 1, Nombre: "Centro 1" },
+      { ID: 2, Nombre: "Centro 2" },
+      { ID: 3, Nombre: "Centro 3" },
+      { ID: 4, Nombre: "Centro 4" }
+    ];
 
   return (
     <>
@@ -33,12 +42,16 @@ const FormSystem = ({
         <SelectField
           Name="ID"
           Value={ID}
-          // Open
-          // OnClose
-          // OnOpen
-          // OnChange
+          Open={Select}
+          OnClose={SelectState(false)}
+          OnOpen={SelectState(true)}
+          OnChange={async e => console.log(e)}
           Required
-        />
+        >
+          {Centro?.map(({ ID, Nombre }, _) => (
+            <MenuItem key={_} value={ID}>{`${ID} / ${Nombre}`}</MenuItem>
+          ))}
+        </SelectField>
 
         <GridTextField
           Elements={[

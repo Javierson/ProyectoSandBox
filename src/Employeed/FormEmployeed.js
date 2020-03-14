@@ -138,30 +138,24 @@ const FormEmployeed = ({
 
         <PaperChip
           Title="Seleccione una o mas herramientas de desarrollo"
-          Elements={
-            Herramienta &&
-            Herramienta.map(({ Herramienta, Nivel }, Item) => (
-              <Chip
-                key={Item}
-                label={`${Herramienta} / ${parseLevel(Nivel)}`}
-                onDelete={async () => await onDeleteArrayChipTool(Item)}
-              />
-            ))
-          }
+          Elements={Herramienta?.map(({ Herramienta, Nivel }, Item) => (
+            <Chip
+              key={Item}
+              label={`${Herramienta} / ${parseLevel(Nivel)}`}
+              onDelete={async () => await onDeleteArrayChipTool(Item)}
+            />
+          ))}
         />
 
         <PaperChip
           Title="Seleccione uno o mas procesos"
-          Elements={
-            Proceso &&
-            Proceso.map(({ Proceso, Nivel }, Item) => (
-              <Chip
-                key={Item}
-                label={`${Proceso} / ${parseLevel(Nivel)}`}
-                onDelete={async () => await onDeleteArrayChipProcess(Item)}
-              />
-            ))
-          }
+          Elements={Proceso?.map(({ Proceso, Nivel }, Item) => (
+            <Chip
+              key={Item}
+              label={`${Proceso} / ${parseLevel(Nivel)}`}
+              onDelete={async () => await onDeleteArrayChipProcess(Item)}
+            />
+          ))}
         />
       </GridContainer>
       <ButtonSubmit EndIcon={<PersonAddSharp />}>
