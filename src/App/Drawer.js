@@ -1,22 +1,18 @@
+
+
 import React, { useState } from "react";
 import clsx from "clsx";
+import { createPortal } from 'react-dom'
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import {
-  Drawer,
-  AppBar,
-  Toolbar,
-  List,
-  CssBaseline,
-  Typography,
-  Divider,
-  IconButton,
-  ListItem
-} from "@material-ui/core";
+import { AppBar, Drawer, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem } from "@material-ui/core";
+
+import { LogIn } from '../LogIn'
 
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import MenuIcon from "@material-ui/icons/Menu";
+import { AccountCircleSharp } from "@material-ui/icons"
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
@@ -86,17 +82,17 @@ const drawerWidth = 240,
       padding: theme.spacing(3)
     }
   })),
-  { Routes } = require("../AppModules");
+  { DrawerSetUp: { MenuDivider }, Routes } = require("../AppModules");
 
 export default function MiniDrawer({ children }) {
   const classes = useStyles(),
     theme = useTheme(),
     [open, setOpen] = useState(false),
     handleDrawerOpen = () => setOpen(true),
-    handleDrawerClose = () => setOpen(false);
+    handleDrawerClose = () => setOpen(false),
+    [state, setState] = useState({ Dialog: false }), { Dialog } = state
 
-  return (
-    <div className={classes.root}>
+  return <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -145,8 +141,8 @@ export default function MiniDrawer({ children }) {
         </div>
         <Divider />
         <List>
-          {Routes &&
-            Routes.map(({ Label, Path }, _) => (
+          {Routes?.map(({ Label, Path }, _) =>
+          <>
               <Link to={Path} key={_}>
                 <ListItem button>
                   <ListItemIcon>
@@ -155,32 +151,32 @@ export default function MiniDrawer({ children }) {
                   <ListItemText primary={Label} />
                 </ListItem>
               </Link>
-            ))}
-        </List>
-        <Divider />
-        <List>
-          {[
-            "Registrar sistema",
-            "Registrar modulo",
-            "Registrar submodulo",
-            "Registrar proceso"
-          ].map((text, _) => (
-            <Link to={`/${text}`} key={_}>
-              <ListItem button key={_}>
-                <ListItemIcon>
-                  {_ % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            </Link>
-          ))}
-        </List>
+              { _ !== 0 && _ % MenuDivider === 0 && <Divider /> }
+              </>
+          )}
+
+            <ListItem button onClick = { async () => await setState({ ...state, Dialog: true }) }>
+              <ListItemIcon><AccountCircleSharp/>
+              </ListItemIcon>
+              <ListItemText primary = 'Inisiar sesion'/>
+            </ListItem>
+
+          </List>
+          <Divider/>
+
       </Drawer>
+
       <main className={classes.content}>
+
         <div className={classes.toolbar} />
 
         {children}
+
       </main>
+
+        { createPortal(<LogIn OpenDialog = { Dialog } CloseDialog = { async () => await setState({ ...state, Dialog: false }) }/>, document.getElementById('Dialog')) }
+
     </div>
-  );
+
 }
+

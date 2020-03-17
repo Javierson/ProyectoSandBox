@@ -3,12 +3,12 @@ import { Form } from ".";
 
 const FormCreateCenter = () => {
   const [state, setState] = useState({
-      Centro: [
+      Centro: [ ]/* [
         { ID: 1, Nombre: "Nombre 1" },
         { ID: 2, Nombre: "Nombre 2" },
         { ID: 3, Nombre: "Nombre 3" },
         { ID: 4, Nombre: "Nombre 4" }
-      ]
+      ] */
     }),
     { Centro } = state;
 

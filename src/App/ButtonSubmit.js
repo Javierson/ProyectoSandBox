@@ -2,9 +2,9 @@ import React from "react";
 import { GridContainer } from ".";
 import { Button, Grid } from "@material-ui/core";
 
-const { GridLayout } = require("../AppModules"),
+const { GridLayout: { Submit } } = require("../AppModules"),
   ButtonSubmit = ({
-    XS = GridLayout.XS,
+    XS = Submit.XS,
     Type = "submit",
     Variant = "outlined",
     Color = "primary",

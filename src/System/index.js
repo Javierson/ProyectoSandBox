@@ -1,4 +1,4 @@
-import Form from "./Form";
+import Form from "./FormSystem";
 
 import FormCreateSystem from "./FormCreateSystem";
 

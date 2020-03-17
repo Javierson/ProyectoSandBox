@@ -67,49 +67,26 @@ const DialogActions = withStyles(({ spacing }) => ({
 }))(MuiDialogActions);
 
 export default function CustomDialog({
-  state,
-  setState,
-  Custom: { Title, Divider },
+  OpenDialog,
+  CloseDialog,
+  Custom: { Title, Divider } = { },
   ButtonsAction,
   children
 }) {
-  const Close = async () => await setState({ ...state, Dialog: false });
 
-  return (
-    <div>
-      <Dialog onClose={Close} aria-labelledby="Dialog" open={state.Dialog}>
-        <DialogTitle id="Dialog" onClose={Close}>
-          {Title}
-        </DialogTitle>
+  // const [ state, setState ] = useState({ OpenDialog: Open }), { OpenDialog } = state, Close = async () => await setState({ ...state, OpenDialog: false })
+
+  return <div>
+      <Dialog onClose={CloseDialog} aria-labelledby="Dialog" open = { OpenDialog }>
+        <DialogTitle id="Dialog" onClose={CloseDialog}>{ Title }</DialogTitle>
         <DialogContent dividers={Divider}>{children}</DialogContent>
         <DialogActions>
-          <Button
-            autoFocus
-            startIcon={<UndoSharp />}
-            onClick={Close}
-            color="primary"
-          >
-            Cancelar
-          </Button>
-          {ButtonsAction?.map(
-            (
-              { Label, Type, OnClick, Icon, Color = "primary", Disabled },
-              _
-            ) => (
-              <Button
-                type={Type}
-                key={_}
-                onClick={OnClick}
-                startIcon={Icon}
-                color={Color}
-                disabled={Disabled}
-              >
-                {Label}
-              </Button>
-            )
-          )}
+          <Button autoFocus startIcon={<UndoSharp/>} onClick={CloseDialog} color="primary">Cancelar</Button>
+          { ButtonsAction?.map( ({ Label, Type, OnClick, Icon, Color = "primary", Disabled }, _) => <Button type={Type} key={_} onClick={OnClick} startIcon={Icon} color={Color} disabled={Disabled}>{ Label }</Button> ) }
         </DialogActions>
       </Dialog>
     </div>
-  );
+
+
 }
+

@@ -5,7 +5,7 @@ const Message = (X, Y) => {
     if (!Y || Y === 0) return <Typography align="center">{X}</Typography>;
   },
   PaperChip = ({ XS = 12, Title, Length, Elevation = 3, children }) => (
-    <Grid item xs={XS}>
+    <Grid item>
       <Paper elevation={Elevation}>
         {children}
         {Message(Title, Length)}

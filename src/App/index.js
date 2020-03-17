@@ -8,6 +8,8 @@ import ButtonSubmit from './ButtonSubmit'
 
 import Drawer from "./Drawer";
 
+import Dialog from './Dialog'
+
 import GridContainer from "./GridContainer";
 
 import SelectField from "./Select";
@@ -30,6 +32,7 @@ export {
   ButtonGroup,
   ButtonSubmit,
   Drawer,
+  Dialog,
   GridContainer,
   IconButton,
   SelectField,

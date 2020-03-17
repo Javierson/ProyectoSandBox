@@ -1,4 +1,4 @@
-import FormTool from "./Form";
+import FormTool from "./FormTool";
 
 import FormCreateTool from "./FormCreateTool";
 

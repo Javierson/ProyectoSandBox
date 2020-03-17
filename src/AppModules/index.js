@@ -1,7 +1,11 @@
+
+
 import React from "react";
-import { FormCreateEmployeed } from "../Employeed/index";
+
+import { FormCreateUser } from "../User";
 import { FormCreateTool } from "../Tool";
 import { FormCreateCenter } from "../Center";
+import { FormCreateSystem } from "../System";
 
 const Test = () => <h2>Test</h2>,
   GridLayout = {
@@ -9,8 +13,9 @@ const Test = () => <h2>Test</h2>,
     Direction: "row",
     Justify: "space-evenly",
     AlignItems: "center",
-    XS: 4
-  },
+    XS: 4,
+    Submit: { XS: 6 }
+  }, DrawerSetUp = { MenuDivider: 3 },
   parseLevel = Integer => {
     let Value;
     switch (Integer) {
@@ -31,28 +36,25 @@ const Test = () => <h2>Test</h2>,
         break;
     }
     return Value;
-  },
-  Routes = [
-    {
-      Label: "Inicio",
-      Path: "/"
-      // Component: Test
-    },
-    {
-      Label: "Usuario",
-      Path: "/Registrar usuario"
-      // Component: FormCreateEmployeed
-    },
-    {
-      Label: "Herramienta",
-      Path: "/Registrar herramienta"
-      // Component: FormCreateTool
-    },
-    {
-      Label: "Centro",
-      Path: "/Registrar centro"
-      // Component: FormCreateCenter
+  }, Tools = [
+    { Nombre: "Framework", Tipo: 0 },
+    { Nombre: "Lenguaje de programacion", Tipo: 1 },
+    { Nombre: "Libreria", Tipo: 2 },
+    { Nombre: "Patron de diseño", Tipo: 3 }
+  ], parseTool = Item => {
+    try {
+      return Tools.find(({ Tipo }) => Tipo === Item).Nombre;
+    } catch {
+      return "No especificado";
     }
-  ];
+  }, Routes = [
+    { Label: "Inicio", Path: "/", Component: Test },
+    { Label: "Usuario", Path: "/Registrar usuario", Component: FormCreateUser },
+    { Label: "Herramienta", Path: "/Registrar herramienta", Component: FormCreateTool },
+    { Label: "Centro", Path: "/Registrar centro", Component: FormCreateCenter },
+    { Label: "Sistema", Path: "/Registrar sistema", Component: FormCreateSystem }
+  ]
 
-export { parseLevel, Routes, GridLayout };
+
+export { DrawerSetUp, parseLevel, Tools, parseTool, Routes, GridLayout };
+
