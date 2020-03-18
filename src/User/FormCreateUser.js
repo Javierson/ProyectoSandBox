@@ -33,37 +33,35 @@ const FormCreateUser = () => {
   });
 
   return (
-    <>
-      <form onSubmit={e => e.preventDefault()}>
-        <FormEmployeed
-          state={state}
-          setState={{
-            setState: async ({ target: { name, value } }) =>
-              await setState({
-                ...state,
-                Usuario: { ...state.Usuario, [name]: value }
-              }),
-            setIntegerState: async ({ target: { name, value } }) =>
-              await setState({
-                ...state,
-                Usuario: { ...state.Usuario, [name]: parseInt(value) }
-              }),
-            onDeleteArrayChipTool: async Item =>
-              await setState({
-                ...state,
-                Herramienta: state.Herramienta.filter(
-                  (_, Index) => Index !== Item
-                )
-              }),
-            onDeleteArrayChipProcess: async Item =>
-              await setState({
-                ...state,
-                Proceso: state.Proceso.filter((_, Index) => Index !== Item)
-              })
-          }}
-        />
-      </form>
-    </>
+    <form onSubmit={e => e.preventDefault()}>
+      <FormEmployeed
+        state={state}
+        setState={{
+          setState: async ({ target: { name, value } }) =>
+            await setState({
+              ...state,
+              Usuario: { ...state.Usuario, [name]: value }
+            }),
+          setIntegerState: async ({ target: { name, value } }) =>
+            await setState({
+              ...state,
+              Usuario: { ...state.Usuario, [name]: parseInt(value) }
+            }),
+          onDeleteArrayChipTool: async Item =>
+            await setState({
+              ...state,
+              Herramienta: state.Herramienta.filter(
+                (_, Index) => Index !== Item
+              )
+            }),
+          onDeleteArrayChipProcess: async Item =>
+            await setState({
+              ...state,
+              Proceso: state.Proceso.filter((_, Index) => Index !== Item)
+            })
+        }}
+      />
+    </form>
   );
 };
 

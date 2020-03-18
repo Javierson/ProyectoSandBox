@@ -13,22 +13,20 @@ const FormCreateCenter = () => {
     { Centro } = state;
 
   return (
-    <>
-      <form onSubmit={e => e.preventDefault()}>
-        <Form
-          state={Centro}
-          setState={{
-            addArrayChipCenter: async Item =>
-              await setState({ ...state, Centro: Centro.concat([Item]) }),
-            onDeleteArrayChipCenter: async Item =>
-              await setState({
-                ...state,
-                Centro: Centro.filter((_, Index) => Index !== Item)
-              })
-          }}
-        />
-      </form>
-    </>
+    <form onSubmit={e => e.preventDefault()}>
+      <Form
+        state={Centro}
+        setState={{
+          addArrayChipCenter: async Item =>
+            await setState({ ...state, Centro: Centro.concat([Item]) }),
+          onDeleteArrayChipCenter: async Item =>
+            await setState({
+              ...state,
+              Centro: Centro.filter((_, Index) => Index !== Item)
+            })
+        }}
+      />
+    </form>
   );
 };
 
