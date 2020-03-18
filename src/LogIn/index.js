@@ -47,7 +47,7 @@ const LogIn = ({ OpenDialog, CloseDialog }) => {
       }),
     SubmitForm = async e => {
       await e.preventDefault();
-      await CloseDialog();
+      await CloseDialog;
       console.log("Funcion submitForm");
     };
 
