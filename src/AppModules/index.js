@@ -1,11 +1,17 @@
-
-
 import React from "react";
 
 import { FormCreateUser } from "../User";
 import { FormCreateTool } from "../Tool";
 import { FormCreateCenter } from "../Center";
 import { FormCreateSystem } from "../System";
+
+import {
+  HomeSharp,
+  PersonSharp,
+  BuildSharp,
+  BusinessCenterSharp,
+  SettingsSharp
+} from "@material-ui/icons";
 
 const Test = () => <h2>Test</h2>,
   GridLayout = {
@@ -15,7 +21,14 @@ const Test = () => <h2>Test</h2>,
     AlignItems: "center",
     XS: 4,
     Submit: { XS: 6 }
-  }, DrawerSetUp = { MenuDivider: 3 },
+  },
+  DrawerSetUp = { MenuDivider: 3 },
+  Level = [null, "Nulo", "Bajo", "Medio", "Alto"],
+  parseLevel2 = Integer => {
+    if (Integer < Level.length)
+      return Level.find((_, Index) => Index === Integer);
+    else return "No especificado";
+  },
   parseLevel = Integer => {
     let Value;
     switch (Integer) {
@@ -36,25 +49,46 @@ const Test = () => <h2>Test</h2>,
         break;
     }
     return Value;
-  }, Tools = [
+  },
+  Tools = [
     { Nombre: "Framework", Tipo: 0 },
     { Nombre: "Lenguaje de programacion", Tipo: 1 },
     { Nombre: "Libreria", Tipo: 2 },
     { Nombre: "Patron de diseño", Tipo: 3 }
-  ], parseTool = Item => {
+  ],
+  parseTool = Item => {
     try {
       return Tools.find(({ Tipo }) => Tipo === Item).Nombre;
     } catch {
       return "No especificado";
     }
-  }, Routes = [
-    { Label: "Inicio", Path: "/", Component: Test },
-    { Label: "Usuario", Path: "/Registrar usuario", Component: FormCreateUser },
-    { Label: "Herramienta", Path: "/Registrar herramienta", Component: FormCreateTool },
-    { Label: "Centro", Path: "/Registrar centro", Component: FormCreateCenter },
-    { Label: "Sistema", Path: "/Registrar sistema", Component: FormCreateSystem }
-  ]
-
+  },
+  Routes = [
+    { Label: "Inicio", Path: "/", Component: Test, Icon: <HomeSharp /> },
+    {
+      Label: "Usuario",
+      Path: "/Registrar usuario",
+      Component: FormCreateUser,
+      Icon: <PersonSharp />
+    },
+    {
+      Label: "Herramienta",
+      Path: "/Registrar herramienta",
+      Component: FormCreateTool,
+      Icon: <BuildSharp />
+    },
+    {
+      Label: "Centro",
+      Path: "/Registrar centro",
+      Component: FormCreateCenter,
+      Icon: <BusinessCenterSharp />
+    },
+    {
+      Label: "Sistema",
+      Path: "/Registrar sistema",
+      Component: FormCreateSystem,
+      Icon: <SettingsSharp />
+    }
+  ];
 
 export { DrawerSetUp, parseLevel, Tools, parseTool, Routes, GridLayout };
-
