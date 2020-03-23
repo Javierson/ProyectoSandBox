@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import clsx from "clsx";
 import { createPortal } from "react-dom";
@@ -11,6 +13,7 @@ import {
   Typography,
   Divider,
   IconButton,
+  Tooltip,
   ListItem
 } from "@material-ui/core";
 
@@ -101,8 +104,8 @@ export default function MiniDrawer({ children }) {
     [open, setOpen] = useState(false),
     handleDrawerOpen = () => setOpen(true),
     handleDrawerClose = () => setOpen(false),
-    [state, setState] = useState({ Dialog: false }),
-    { Dialog } = state;
+    [state, setState] = useState({ Title: undefined, Dialog: false }),
+    { Title, Dialog } = state;
 
   return (
     <div className={classes.root}>
@@ -126,7 +129,7 @@ export default function MiniDrawer({ children }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            { Title }
           </Typography>
         </Toolbar>
       </AppBar>
@@ -154,27 +157,27 @@ export default function MiniDrawer({ children }) {
         </div>
         <Divider />
         <List>
-          {Routes?.map(({ Label, Path, Icon }, _) => (
+          { Routes?.map(({ Label, Path, Icon }, _) =>
             <>
               <Link to={Path} key={_}>
-                <ListItem button>
-                  <ListItemIcon>{Icon}</ListItemIcon>
-                  <ListItemText primary={Label} />
+              <Tooltip title = { Label } placement = 'right'>
+                <ListItem button onClick = { async () => await setState({ ...state, Title: Label }) }>
+                  <ListItemIcon>{ Icon }</ListItemIcon>
+                  <ListItemText primary = { Label }/>
                 </ListItem>
+              </Tooltip>
               </Link>
-              {_ !== 0 && _ % MenuDivider === 0 && <Divider />}
+              { _ !== 0 && _ % MenuDivider === 0 && <Divider /> }
             </>
-          ))}
-
-          <ListItem
-            button
-            onClick={async () => await setState({ ...state, Dialog: true })}
-          >
+          ) }
+          <Tooltip title = 'Inisiar sesion' placement = 'right'>
+          <ListItem button onClick = { async () => await setState({ ...state, Dialog: true }) }>
             <ListItemIcon>
               <AccountCircleSharp />
             </ListItemIcon>
             <ListItemText primary="Inisiar sesion" />
           </ListItem>
+          </Tooltip>
         </List>
         <Divider />
       </Drawer>
@@ -192,6 +195,8 @@ export default function MiniDrawer({ children }) {
         />,
         document.getElementById("Dialog")
       )}
+
     </div>
   );
 }
+

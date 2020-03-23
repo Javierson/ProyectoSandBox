@@ -30,7 +30,7 @@ const FormCenter = ({ state, setState: { addArrayChipCenter, onDeleteArrayChipCe
               Name: "Nombre",
               OnChange: async ({ target: { name, value } }) => setCenterState({ ...centerState, Sistema: { ...centerState.Sistema, [name]: value }, Form: { ...centerState.Form, Disabled: IconDisabled } }),
               Value: Nombre,
-              Props: { endAdornment: <InputAdornmentIcon Disabled = { IconDisabled } OnClick = { async () => {
+              Props: { endAdornment: <InputAdornmentIcon Disabled = { Disabled } OnClick = { async () => {
                 if (!isNaN(ID) && Nombre?.trim().length !== 0) {
                   await addArrayChipCenter(Sistema)
                   setCenterState({ ...centerState, Sistema: { ...centerState.Sistema, ID: undefined, Nombre: undefined }, Form: { ...centerState.Form, Disabled: true } })

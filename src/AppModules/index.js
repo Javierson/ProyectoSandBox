@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FormCreateUser } from "../User";
+import { FormCreateUser, TableUser } from "../User";
 import { FormCreateTool } from "../Tool";
 import { FormCreateCenter } from "../Center";
 import { FormCreateSystem } from "../System";
@@ -10,7 +10,8 @@ import {
   PersonSharp,
   BuildSharp,
   BusinessCenterSharp,
-  SettingsSharp
+  SettingsSharp,
+  GroupWorkSharp
 } from "@material-ui/icons";
 
 const Test = () => <h2>Test</h2>,
@@ -24,12 +25,12 @@ const Test = () => <h2>Test</h2>,
   },
   DrawerSetUp = { MenuDivider: 3 },
   Level = [null, "Nulo", "Bajo", "Medio", "Alto"],
-  parseLevel2 = Integer => {
+  parseLevel = Integer => {
     if (Integer < Level.length)
       return Level.find((_, Index) => Index === Integer);
     else return "No especificado";
-  },
-  parseLevel = Integer => {
+  }, /*
+  parseLevel2 = Integer => {
     let Value;
     switch (Integer) {
       case null:
@@ -49,7 +50,7 @@ const Test = () => <h2>Test</h2>,
         break;
     }
     return Value;
-  },
+  }, */
   Tools = [
     { Nombre: "Framework", Tipo: 0 },
     { Nombre: "Lenguaje de programacion", Tipo: 1 },
@@ -88,7 +89,15 @@ const Test = () => <h2>Test</h2>,
       Path: "/Registrar sistema",
       Component: FormCreateSystem,
       Icon: <SettingsSharp />
+    },
+    {
+      Label: "Consultar usuarios",
+      Path: "/Consultar/Usuario",
+      Component: TableUser,
+      Icon: <GroupWorkSharp />
     }
   ];
 
+
 export { DrawerSetUp, parseLevel, Tools, parseTool, Routes, GridLayout };
+
